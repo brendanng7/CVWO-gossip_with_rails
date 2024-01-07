@@ -2,9 +2,15 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.0-beta.2",
+    "@mui/icons-material": "^5.15.3",
+    "@mui/material": "^5.15.3",
     "@popperjs/core": "^2.11.8",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
     "autoprefixer": "^10.4.16",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.3",
@@ -12,10 +18,15 @@
     "nodemon": "^3.0.2",
     "postcss": "^8.4.33",
     "postcss-cli": "^11.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1",
+    "react-scripts": "^5.0.1",
     "sass": "^1.69.7"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
+    "build": "esbuild app/javascript/application.tsx --bundle --sourcemap --outdir=app/assets/builds",
+    "check-types": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput",
     "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "build:css:prefix": "postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css",
     "build:css": "yarn build:css:compile && yarn build:css:prefix",
@@ -23,5 +34,10 @@
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "devDependencies": {
+    "esbuild-sass-plugin": "^2.16.1",
+    "sass-loader": "^13.3.3",
+    "webpack": "^5.89.0"
+  }
 }

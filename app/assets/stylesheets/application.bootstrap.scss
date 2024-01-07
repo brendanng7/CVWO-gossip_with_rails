@@ -1,2 +1,48 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import './fonts.scss';
+
+.navbar {
+    background-color: #FEE569;
+    width: 100vw;
+}
+
+.page-white {
+    background-color: #FBFBFB;
+}
+
+.reviews-bg_colour {
+    background-color: #AACCBB;
+}
+
+.page-black {
+    color: #1B0E02;
+    font-family: 'Inika-Bold', Georgia, 'Times New Roman', Times, serif;
+}
+
+.circle {
+    display: flex;
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
+    background-color: #AACCBB;
+    align-items: center;
+    justify-content: center;
+  }
+
+.circle-image {
+    width: 20vw;
+    height: 20vw;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.vh-90 {
+    height: 90vh;
+}
+
+.custom-button {
+    background-color: #B17A02;
+    margin: auto;
+    width: 7rem;
+}

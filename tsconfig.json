@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "strict": true,
+      "target": "es5",
+      "lib": ["es6", "dom"],
+      "sourceMap": true,
+      "jsx": "react",
+      "moduleResolution": "node",
+      "esModuleInterop": true
+    },
+    "exclude": [
+      "node_modules",
+      "build",
+      "scripts",
+      "acceptance-tests",
+      "webpack",
+      "jest",
+      "src/setupTests.ts"
+    ],
+    "types": [
+      "typePatches"
+    ]
+  }

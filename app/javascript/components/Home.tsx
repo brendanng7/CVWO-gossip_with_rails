@@ -11,8 +11,8 @@ function Home() {
                 <div className="jumbotron jumbotron-fluid flex-column">
                     <Hero />
                     <div className="d-flex justify-content-center m-4">
-                        <Link role="button" to={"/register"} className="btn custom-button">Register</Link>
-                        <Link role="button" to={"/login"} className="btn custom-button">Login</Link>
+                        <Link role="button" to={"/register"} className="btn custom-button page-black">Register</Link>
+                        <Link role="button" to={"/login"} className="btn custom-button page-black">Login</Link>
                     </div>
                 </div>
             </div>

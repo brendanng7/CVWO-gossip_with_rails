@@ -18,7 +18,7 @@ function Copyright(props: any) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Groomers Reviewers
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -62,21 +62,21 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
               autoFocus
             />
             <TextField
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              name="pin"
+              label="6-PIN"
+              type="pin"
+              id="pin"
+              autoComplete="current-pin"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

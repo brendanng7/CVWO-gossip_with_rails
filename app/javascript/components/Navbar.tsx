@@ -19,6 +19,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [firstName, setFirstName] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -34,6 +35,27 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const fetchFirstName = async () => {
+    try {
+      const response = await fetch('/api/v1/users/get/'); // Adjust the endpoint accordingly
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+
+      const data = await response.json();
+      setFirstName(data.first_name); // Assuming the response has a 'first_name' property
+    } catch (error) {
+      console.error('API Error:', error.message);
+    }
+  };
+
+  React.useEffect(() => {
+    // Fetch the user's first name when the component mounts
+    fetchFirstName();
+  }, []); // Empty dependency array ensures the effect runs once when the component mounts
+
 
   return (
     <AppBar position="sticky">

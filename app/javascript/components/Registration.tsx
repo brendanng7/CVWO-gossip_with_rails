@@ -30,13 +30,40 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    
+    try {
+      const response = await fetch('/api/v1/users/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user: {
+            first_name: data.get('firstName'),
+            last_name: data.get('lastName'),
+            username: data.get('username'),
+            password: data.get('password'),
+            email: data.get('email')
+          }
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'An error occurred.');
+      }
+
+      const responseData = await response.json();
+      console.log('API Response:', responseData);
+
+      // Redirect or navigate to another page after successful sign-up
+    } catch (error) {
+      console.error('API Error:', error.message);
+      // Handle error (display a message, etc.)
+    }
   };
 
   return (
@@ -84,6 +111,16 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  id="email"
+                  label="Email"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
                   id="username"
                   label="Username"
                   name="username"
@@ -94,11 +131,11 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="pin"
-                  label="Pin"
-                  type="pin"
-                  id="pin"
-                  autoComplete="new-pin"
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
                 />
               </Grid>
               <Grid item xs={12}>
